@@ -22,14 +22,14 @@ class TestCustomer:
         assert customer.name == "Stove"
         
         # comment out the next two lines if using Exceptions
-        customer.name = 1
-        assert customer.name == "Stove"
+        # customer.name = 1
+        # assert customer.name == "Stove"
         
         assert isinstance(customer.name, str)
 
         # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     customer.name = 1
+        with pytest.raises(Exception):
+            customer.name = 1
 
     def test_name_length(self):
         """name is between 1 and 15 characters"""
