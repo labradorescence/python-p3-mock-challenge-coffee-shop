@@ -76,42 +76,10 @@ class Customer:
  
     @classmethod
     def total_spent(cls, customer, coffee):
-        """
-        Calculate the total amount spent by the customer on a specific coffee.
-
-        Parameters:
-        - customer: The customer object.
-        - coffee: The coffee object.
-
-        Returns:
-        - Total amount spent by the customer on the specified coffee.
-        """
         return sum(order.price for order in customer.orders() if order.coffee == coffee)
 
     @classmethod
-    def total_spent_for_coffee(cls, customer, coffee):
-        """
-        Helper function for sorting customers based on total spent.
-
-        Parameters:
-        - customer: The customer object.
-
-        Returns:
-        - Total amount spent by the customer on the specified coffee.
-        """
-        return cls.total_spent(customer, coffee)
-
-    @classmethod
     def most_aficionado(cls, coffee):
-        """
-        Find the customer who is the most aficionado of a specific coffee.
-
-        Parameters:
-        - coffee: The coffee object.
-
-        Returns:
-        - The customer object who spent the most on the specified coffee.
-        """
         # Define a separate function to act as the key function
         def key_function(customer):
             return cls.total_spent(customer, coffee)
@@ -122,9 +90,6 @@ class Customer:
         # Check if there are no customers for the specified coffee.
         if not customers_for_coffee:
             return None
-
-        # Display the list of customers and their total spent on the coffee.
-        print(":::", customers_for_coffee, [c.name for c in customers_for_coffee], ":::")
 
         # Find the customer with the highest total spent on the coffee.
         return max(customers_for_coffee, key=key_function)
